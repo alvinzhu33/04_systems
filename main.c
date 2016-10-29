@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
-
-size_t getSize(const char *file){
-    struct stat info;
-    stat(file, &info);
-    return info.st_size;
-}
+#include <time.h>
 
 int main(){
-    printf("%lu bytes\n", getSize("main.c"));
+    //making stat
+    struct stat info;
+    stat("main.c", &info);
+
+    //getting info (thanks Internet!)
+    printf("Info for main.c:\n");
+    printf("Size: %lu bytes\n", info.st_size);
+    printf("Mode: %o\n", info.st_mode);
+    printf("Access: %s\n", ctime(&info.st_atime));
 
     return 0;
 }
