@@ -2,11 +2,14 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 
+size_t getSize(const char *file){
+    struct stat info;
+    stat(file, &info);
+    return info.st_size;
+}
+
 int main(){
-  struct stat info;
-  const char name = '..\main.c';
-  stat(name, &info);
-  printf("%d\n", st.st_size);
-  
-  return 0;
+    printf("%lu bytes\n", getSize("main.c"));
+
+    return 0;
 }
