@@ -21,7 +21,15 @@ void easySize(int size){
 }
 
 void easyPermissions(int mode){
-  printf("%d\n",mode);
+  int perm[3];
+  mode=mode/1000;
+  mode = mode/8;
+  perm[2] = mode;
+  mode = mode/8;
+  perm[1] = mode;
+  mode = mode/8;
+  perm[0] = mode/8;
+  printf("%d%d%d\n", perm[0], perm[1], perm[2]);
 }
 
 int main(){
@@ -33,8 +41,7 @@ int main(){
   printf("Info for main.c:\n");
   easySize(info.st_size);
   printf("Mode: %o\n", info.st_mode);
-  int try=info.st_mode;
-  easyPermissions(try);
+  easyPermissions(info.st_mode);
   printf("Access: %s\n", ctime(&info.st_atime));
 
   return 0;
