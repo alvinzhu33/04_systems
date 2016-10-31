@@ -22,13 +22,12 @@ void easySize(int size){
 
 void easyPermissions(int mode){
   int perm[3];
-  mode=mode/1000;
+  mode = mode/1000
+  perm[2] = mode%8;
   mode = mode/8;
-  perm[2] = mode;
+  perm[1] = mode%8;
   mode = mode/8;
-  perm[1] = mode;
-  mode = mode/8;
-  perm[0] = mode/8;
+  perm[0] = mode%8;
   printf("%d%d%d\n", perm[0], perm[1], perm[2]);
 }
 
