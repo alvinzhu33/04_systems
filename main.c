@@ -6,15 +6,15 @@
 void easySize(int size){
   printf("Size: ");
   if(size >= 1000000000){
-    printf("%d GB\n", size/1000000000);
+    printf("%d.%d GB\n", size/1000000000, size%1000000000/1000000);
   }else{
     if(size >= 1000000){
-      printf("%d MB\n", size/1000000);
+      printf("%d.%d MB\n", size/1000000, size%1000000/1000);
     }else{
       if(size >= 1000){
-	printf("%d KB\n", size/1000);
+	printf("%d.%d KB\n", size/1000, size%1000);
       }else{
-	printf("%d B\n", size/1);
+	printf("%d B\n", size);
       }
     }
   }
